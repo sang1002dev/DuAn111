@@ -18,6 +18,7 @@ import sanghvph30000.fpoly.duan111.fragment.HomeFragment;
 import sanghvph30000.fpoly.duan111.fragment.ProductFragment;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+    public static BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
     private LinearLayout linearLayout;
     BottomNavigationView btNavView;
