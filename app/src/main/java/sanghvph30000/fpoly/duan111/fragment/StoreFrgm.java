@@ -133,7 +133,7 @@ public class StoreFrgm extends Fragment {
                         SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE", getActivity().MODE_PRIVATE);
                         int maUser = pref.getInt("MA", 0);
                         User user = daoUser.getUser(maUser);
-                        String fullName = user.getFullName();
+                        String fullName = user.getTenDN();
 
 //                    Lấy ngày tạo hóa đơn
                         Date nowDate = Calendar.getInstance().getTime();

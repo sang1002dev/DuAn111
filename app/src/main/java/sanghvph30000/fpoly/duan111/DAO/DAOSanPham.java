@@ -17,9 +17,8 @@ public class DAOSanPham {
     DbHelper dbHelper;
 
     public DAOSanPham(Context context) {
-        dbHelper = new DbHelper(context, "DuAn1", null, 1);
+        dbHelper = new DbHelper(context);
         database = dbHelper.getWritableDatabase();
-        database = dbHelper.getReadableDatabase();
     }
 
     public void insertData(byte[] image, String TenSanPham, double Price, int MaLoai, String MoTa) {

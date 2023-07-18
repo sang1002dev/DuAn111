@@ -17,9 +17,8 @@ public class DAOGioHang {
 
 //    Khởi tạo Constructor
     public DAOGioHang(Context context){
-        dbHelper = new DbHelper(context, "DuAn1", null, 1);
+        dbHelper = new DbHelper(context);
         database = dbHelper.getWritableDatabase();
-        database = dbHelper.getReadableDatabase();
     }
 
 //    Thêm sản phẩm vào giỏ hàng
