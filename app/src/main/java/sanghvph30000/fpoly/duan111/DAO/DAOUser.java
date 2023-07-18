@@ -12,34 +12,30 @@ import sanghvph30000.fpoly.duan111.Model.User;
 
 public class DAOUser {
     private SQLiteDatabase database;
-
+    private DbHelper dbHelper;
     public DAOUser(Context context) {
-        DbHelper dbHelper = new DbHelper(context, "DuAn1", null, 1);
-        database = dbHelper.getReadableDatabase();
+        dbHelper = new DbHelper(context); // Khởi tạo DbHelper
         database = dbHelper.getWritableDatabase();
     }
 
 //    Add User
     public long insertUser(User user) {
         ContentValues values = new ContentValues();
-        values.put("FullName", user.getFullName());
-        values.put("Username", user.getUsername());
-        values.put("ChucVu", user.getMaChucVu());
+        values.put("TenDN", user.getTenDN());
+        values.put("MaChucVu", user.getMaChucVu());
         values.put("Password", user.getPassword());
         values.put("SDT", user.getSDT());
-        values.put("NamSinh", user.getNamSinh());
         return database.insert("User", null, values);
     }
 
     // update User
     public boolean updateUser(User user) {
         ContentValues values = new ContentValues();
-        values.put("FullName", user.getFullName());
+        values.put("TenDN", user.getTenDN());
         if (!user.getPassword().isEmpty()){
             values.put("Password", user.getPassword());
         }
         values.put("SDT", user.getSDT());
-        values.put("NamSinh", user.getNamSinh());
 
         long check = database.update("User", values, "MaUser=?", new String[]{String.valueOf(user.getID_User())});
         if (check == -1){
@@ -51,15 +47,15 @@ public class DAOUser {
     }
 
     //    Check Đăng nhập tài khoản
-    public ArrayList<User> checkLogin(String username, String password) {
-        String sql = "SELECT * FROM User WHERE Username=? AND Password=?";
-        ArrayList<User> list = getData(sql, username, password);
+    public ArrayList<User> checkLogin(String TenDN, String password) {
+        String sql = "SELECT * FROM User WHERE TenDN=? AND Password=?";
+        ArrayList<User> list = getData(sql, TenDN, password);
         return list;
     }
 
 //    Check tồn tại userName;
     public int checkValid(String username) {
-        String sql = "SELECT * FROM User WHERE Username=?";
+        String sql = "SELECT * FROM User WHERE TenDN=?";
         ArrayList<User> list = getData(sql, username);
         return list.size();
     }
@@ -67,19 +63,16 @@ public class DAOUser {
     //    Lấy thông tin User theo ID
     public User getUser(int inputId) {
         User user = null;
-        Cursor cursor = database.rawQuery("SELECT User.mauser, User.fullname, User.Username, User.password, ChucVu.MaChucVu, ChucVu.tenchucvu, User.sdt,User.namsinh FROM User, ChucVu WHERE User.ChucVu = ChucVu.machucvu and User.MaUser = ?", new String[]{String.valueOf(inputId)});
+        Cursor cursor = database.rawQuery("SELECT User.mauser, User.TenDN, User.password, ChucVu.MaChucVu, User.sdt,User.namsinh FROM User, ChucVu WHERE User.ChucVu = ChucVu.machucvu and User.MaUser = ?", new String[]{String.valueOf(inputId)});
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
                 int maUser = cursor.getInt(0);
-                String fullName = cursor.getString(1);
-                String userName = cursor.getString(2);
+                String TenDN = cursor.getString(1);
+                int MaChucVu = cursor.getInt(2);
                 String passWord = cursor.getString(3);
-                int maChucVu = cursor.getInt(4);
-                String tenChucVu = cursor.getString(5);
-                String soDT = cursor.getString(6);
-                int namSinh = cursor.getInt(7);
-                user = new User(maUser, fullName, userName, passWord, maChucVu, tenChucVu, soDT, namSinh);
+                String soDT = cursor.getString(4);
+                user = new User(maUser, TenDN, MaChucVu,passWord,  soDT );
             } while (cursor.moveToNext());
         }
         return user;
@@ -88,19 +81,16 @@ public class DAOUser {
     //    Lấy danh sách User
     public ArrayList<User> getAllUser() {
         ArrayList<User> listUser = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT User.mauser, User.fullname, User.Username, User.password, ChucVu.MaChucVu, ChucVu.tenchucvu, User.sdt,User.namsinh FROM User, ChucVu WHERE User.ChucVu = ChucVu.machucvu", null);
+        Cursor cursor = database.rawQuery("SELECT User.mauser, User.TenDN, ChucVu.MaChucVu,User.password, User.sdt FROM User, ChucVu WHERE User.ChucVu = ChucVu.machucvu", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
                 int maUser = cursor.getInt(0);
-                String fullName = cursor.getString(1);
-                String userName = cursor.getString(2);
+                String TenDN = cursor.getString(1);
+                int MaChucVu = cursor.getInt(2);
                 String passWord = cursor.getString(3);
-                int maChucVu = cursor.getInt(4);
-                String tenChucVu = cursor.getString(5);
-                String soDT = cursor.getString(6);
-                int namSinh = cursor.getInt(7);
-                listUser.add(new User(maUser, fullName, userName, passWord, maChucVu, tenChucVu, soDT, namSinh));
+                String soDT = cursor.getString(4);
+                listUser.add(new User(maUser, TenDN, MaChucVu,passWord,  soDT ));
             } while (cursor.moveToNext());
         }
         return listUser;
@@ -123,17 +113,15 @@ public class DAOUser {
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-                int id_user = cursor.getInt(0);
-                String fullname = cursor.getString(1);
-                String username = cursor.getString(2);
-                String password = cursor.getString(3);
-                int id_chucVu = cursor.getInt(4);
-                String sdt = cursor.getString(5);
-                int namSinh = cursor.getInt(6);
-
-                list.add(new User(id_user, fullname, username, password, id_chucVu, sdt, namSinh));
+                int maUser = cursor.getInt(0);
+                String TenDN = cursor.getString(1);
+                int MaChucVu = cursor.getInt(2);
+                String passWord = cursor.getString(3);
+                String soDT = cursor.getString(4);
+                list.add(new User(maUser, TenDN, MaChucVu,passWord,  soDT ));
             } while (cursor.moveToNext());
         }
         return list;
     }
+
 }

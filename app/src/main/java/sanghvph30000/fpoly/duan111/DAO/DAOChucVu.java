@@ -15,9 +15,8 @@ public class DAOChucVu {
     DbHelper dbHelper;
 
     public DAOChucVu(Context context) {
-        dbHelper = new DbHelper(context, "DuAn1", null, 1);
+        dbHelper = new DbHelper(context);
         database = dbHelper.getWritableDatabase();
-        database = dbHelper.getReadableDatabase();
     }
 
     public List<ChucVu> getAllChucVu() {

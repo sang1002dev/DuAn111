@@ -17,9 +17,8 @@ public class DAOLuuHD {
 
     //    Khởi tạo Constructor
     public DAOLuuHD(Context context){
-        dbHelper = new DbHelper(context, "DuAn1", null, 1);
+        dbHelper = new DbHelper(context);
         database = dbHelper.getWritableDatabase();
-        database = dbHelper.getReadableDatabase();
     }
 
 //    Thêm Lưu Hóa đơn

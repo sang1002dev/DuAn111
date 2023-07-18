@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,7 +24,8 @@ import sanghvph30000.fpoly.duan111.Model.User;
 public class DangNhapAct extends AppCompatActivity {
     private DAOUser daoUser;
     EditText edtUser, edtPassword;
-    ImageView btnLogin, img_hidePassword;
+    Button btnLogin;
+    ImageView img_hidePassword;
     CheckBox checkBox;
 
     @Override

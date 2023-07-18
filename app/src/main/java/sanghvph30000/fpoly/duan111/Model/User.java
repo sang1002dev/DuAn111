@@ -2,42 +2,21 @@ package sanghvph30000.fpoly.duan111.Model;
 
 public class User {
     int ID_User;
-    String FullName;
-    String username;
+    String TenDN;
+    int MaChucVu;
     String password;
-    int maChucVu;
-    String tenChucVu;
     String SDT;
-    int NamSinh;
 
-    public User(String fullName, String username, String password, int maChucVu, String SDT, int namSinh) {
-        FullName = fullName;
-        this.username = username;
-        this.password = password;
-        this.maChucVu = maChucVu;
-        this.SDT = SDT;
-        NamSinh = namSinh;
+
+    public User() {
     }
 
-    public User(int ID_User, String fullName, String username, String password, int maChucVu, String SDT, int namSinh) {
+    public User(int ID_User, String tenDN, int maChucVu, String password, String SDT) {
         this.ID_User = ID_User;
-        FullName = fullName;
-        this.username = username;
+        TenDN = tenDN;
+        MaChucVu = maChucVu;
         this.password = password;
-        this.maChucVu = maChucVu;
         this.SDT = SDT;
-        NamSinh = namSinh;
-    }
-
-    public User(int ID_User, String fullName, String username, String password, int maChucVu, String tenChucVu, String SDT, int namSinh) {
-        this.ID_User = ID_User;
-        FullName = fullName;
-        this.username = username;
-        this.password = password;
-        this.maChucVu = maChucVu;
-        this.tenChucVu = tenChucVu;
-        this.SDT = SDT;
-        NamSinh = namSinh;
     }
 
     public int getID_User() {
@@ -48,20 +27,20 @@ public class User {
         this.ID_User = ID_User;
     }
 
-    public String getFullName() {
-        return FullName;
+    public String getTenDN() {
+        return TenDN;
     }
 
-    public void setFullName(String fullName) {
-        FullName = fullName;
+    public void setTenDN(String tenDN) {
+        TenDN = tenDN;
     }
 
-    public String getUsername() {
-        return username;
+    public int getMaChucVu() {
+        return MaChucVu;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setMaChucVu(int maChucVu) {
+        MaChucVu = maChucVu;
     }
 
     public String getPassword() {
@@ -72,35 +51,11 @@ public class User {
         this.password = password;
     }
 
-    public int getMaChucVu() {
-        return maChucVu;
-    }
-
-    public void setMaChucVu(int maChucVu) {
-        this.maChucVu = maChucVu;
-    }
-
-    public String getTenChucVu() {
-        return tenChucVu;
-    }
-
-    public void setTenChucVu(String tenChucVu) {
-        this.tenChucVu = tenChucVu;
-    }
-
     public String getSDT() {
         return SDT;
     }
 
     public void setSDT(String SDT) {
         this.SDT = SDT;
-    }
-
-    public int getNamSinh() {
-        return NamSinh;
-    }
-
-    public void setNamSinh(int namSinh) {
-        NamSinh = namSinh;
     }
 }

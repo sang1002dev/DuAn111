@@ -4,36 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DangNhapAct"
+    android:orientation="vertical"
+    tools:context=".DangKiActivity"
     android:background="@drawable/img_1">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/img_2"></ImageView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical"
         android:padding="25dp">
 
-        <ImageView
-            android:layout_width="348dp"
-            android:layout_height="252dp"
-            android:src="@drawable/img" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/ct_font_bold"
-            android:text="FPOLY Mobie"
-            android:textColor="#E91E63"
-            android:textSize="30dp"
-            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ct_font_bold"
-            android:text="Đăng nhập"
+            android:text="Đăng kí"
+            android:layout_gravity="center"
             android:textColor="@color/purple_200"
             android:textSize="35dp"
             android:textStyle="bold" />
@@ -56,6 +46,27 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="50dp"
                 android:hint="Nhập tên đăng nhập"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/edt_Label"
+                android:textColor="@color/purple_200"
+                android:textSize="20dp"
+                android:text="SDT của bạn" />
+
+            <EditText
+                android:id="@+id/edtSDT"
+                style="@style/edt_TextBox1"
+                android:layout_marginTop="5dp"
+                android:layout_height="50dp"
+                android:hint="Nhập SDT"
                 android:textSize="15dp"/>
 
         </LinearLayout>
@@ -100,10 +111,49 @@
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
+            <TextView
+                style="@style/edt_Label"
+                android:textColor="@color/purple_200"
+                android:textSize="20dp"
+                android:text="Nhập lại mật khẩu" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ct_edittext"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edtMatKhau1"
+                    style="@style/edt_TextBox1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Nhập lại mật khẩu"
+                    android:textSize="15dp"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/img_hidePassword1"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_visibility_off" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
         <CheckBox
 
-            android:id="@+id/chkNhoMK"
+            android:id="@+id/chkNhoMK1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -115,12 +165,13 @@
             android:textSize="10dp" />
 
         <Button
-            android:id="@+id/btnDangNhap"
+            android:id="@+id/btnDangki"
             android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
             android:backgroundTint="@color/purple_200"
-            android:text="Đăng nhập" />
+            android:text="Đăng kí"
+             />
 
     </LinearLayout>
 </LinearLayout>
