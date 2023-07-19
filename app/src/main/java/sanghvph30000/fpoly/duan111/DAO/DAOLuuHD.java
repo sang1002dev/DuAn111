@@ -190,16 +190,16 @@ public class DAOLuuHD {
     }
 
 //    Get SP bán chạy
-    public ArrayList<Integer> getTopSP (){
-        ArrayList<Integer> listMaSP = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT LuuHoaDon.maSP, SUM(LuuHoaDon.soluong) as tongSL FROM LuuHoaDon GROUP by LuuHoaDon.maSP ORDER BY tongSL DESC LIMIT 4", null);
-        if (cursor.getCount() != 0){
-            cursor.moveToFirst();
-            do {
-                int maSp = cursor.getInt(0);
-                listMaSP.add(maSp);
-            }   while (cursor.moveToNext());
-        }
-        return listMaSP;
-    }
+//    public ArrayList<Integer> getTopSP (){
+//        ArrayList<Integer> listMaSP = new ArrayList<>();
+//        Cursor cursor = database.rawQuery("SELECT LuuHoaDon.maSP, SUM(LuuHoaDon.soluong) as tongSL FROM LuuHoaDon GROUP by LuuHoaDon.maSP ORDER BY tongSL DESC LIMIT 4", null);
+//        if (cursor.getCount() != 0){
+//            cursor.moveToFirst();
+//            do {
+//                int maSp = cursor.getInt(0);
+//                listMaSP.add(maSp);
+//            }   while (cursor.moveToNext());
+//        }
+//        return listMaSP;
+//    }
 }

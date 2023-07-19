@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ProductFragment">
+    tools:context=".fragment.ProductFragment"
+    android:background="@drawable/img_1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,7 +53,16 @@
                     android:textColor="@color/black"
                     android:layout_alignParentRight="true"
                     />
-
+                <ImageView
+                    android:id="@+id/icDeleteSearch"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_remove"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="10dp"
+                    />
 
 
             </RelativeLayout>
