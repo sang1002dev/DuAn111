@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/img_1"
     tools:context=".fragment.HomeFragment">
 
     <LinearLayout
@@ -68,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/banner" />
+                    android:background="@drawable/anh1" />
 
             </LinearLayout>
 

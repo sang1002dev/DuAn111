@@ -37,7 +37,7 @@ public class DAOUser {
         }
         values.put("SDT", user.getSDT());
 
-        long check = database.update("User", values, "MaUser=?", new String[]{String.valueOf(user.getID_User())});
+        long check = database.update("User", values, "maUser=?", new String[]{String.valueOf(user.getID_User())});
         if (check == -1){
             return false;
         }
@@ -54,16 +54,16 @@ public class DAOUser {
     }
 
 //    Check tồn tại userName;
-    public int checkValid(String username) {
+    public int checkValid(String TenDN) {
         String sql = "SELECT * FROM User WHERE TenDN=?";
-        ArrayList<User> list = getData(sql, username);
+        ArrayList<User> list = getData(sql, TenDN);
         return list.size();
     }
 
     //    Lấy thông tin User theo ID
     public User getUser(int inputId) {
         User user = null;
-        Cursor cursor = database.rawQuery("SELECT User.mauser, User.TenDN, User.password, ChucVu.MaChucVu, User.sdt,User.namsinh FROM User, ChucVu WHERE User.ChucVu = ChucVu.machucvu and User.MaUser = ?", new String[]{String.valueOf(inputId)});
+        Cursor cursor = database.rawQuery("SELECT User.maUser, User.TenDN, ChucVu.MaChucVu, User.Password, User.SDT FROM User, ChucVu WHERE User.MaChucVu = ChucVu.MaChucVu and User.maUser = ?", new String[]{String.valueOf(inputId)});
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
@@ -81,7 +81,7 @@ public class DAOUser {
     //    Lấy danh sách User
     public ArrayList<User> getAllUser() {
         ArrayList<User> listUser = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT User.mauser, User.TenDN, ChucVu.MaChucVu,User.password, User.sdt FROM User, ChucVu WHERE User.ChucVu = ChucVu.machucvu", null);
+        Cursor cursor = database.rawQuery("SELECT User.maUser, User.TenDN, ChucVu.MaChucVu,User.Password, User.SDT FROM User, ChucVu WHERE User.MaChucVu = ChucVu.MaChucVu", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {

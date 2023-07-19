@@ -12,7 +12,7 @@ public class MHChaoAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mhchao);
 
-        Intent intent = new Intent(MHChaoAct.this, DangKiActivity.class);
+        Intent intent = new Intent(MHChaoAct.this, DangNhapAct.class);
 
         Thread timer = new Thread() {
             public void run() {

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class DangNhapAct extends AppCompatActivity {
     private DAOUser daoUser;
     EditText edtUser, edtPassword;
     Button btnLogin;
+    TextView textView1;
     ImageView img_hidePassword;
     CheckBox checkBox;
 
@@ -35,6 +37,7 @@ public class DangNhapAct extends AppCompatActivity {
         edtUser = findViewById(R.id.edtTenDangNhap);
         edtPassword = findViewById(R.id.edtMatKhau);
         checkBox = findViewById(R.id.chkNhoMK);
+        textView1 = findViewById(R.id.tvDaco1);
         btnLogin = findViewById(R.id.btnDangNhap);
         img_hidePassword = findViewById(R.id.img_hidePassword);
         daoUser = new DAOUser(this);
@@ -99,6 +102,13 @@ public class DangNhapAct extends AppCompatActivity {
                         Toast.makeText(DangNhapAct.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DangKiActivity.class);
+                startActivity(intent);
             }
         });
     }

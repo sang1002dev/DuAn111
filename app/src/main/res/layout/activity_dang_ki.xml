@@ -43,7 +43,7 @@
             <EditText
                 android:id="@+id/edtTenDangNhap"
                 style="@style/edt_TextBox1"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="50dp"
                 android:hint="Nhập tên đăng nhập"
                 android:textSize="15dp"/>
@@ -163,6 +163,12 @@
             android:textColor="@color/white"
             android:layout_marginLeft="120dp"
             android:textSize="10dp" />
+        <TextView
+            android:id="@+id/tvDaco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã có tài khoản?"
+            android:layout_marginLeft="200dp"/>
 
         <Button
             android:id="@+id/btnDangki"
