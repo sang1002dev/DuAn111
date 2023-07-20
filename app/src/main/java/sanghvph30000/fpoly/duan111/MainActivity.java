@@ -13,9 +13,9 @@ import android.widget.LinearLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import sanghvph30000.fpoly.duan111.fragment.AccountFragment;
-import sanghvph30000.fpoly.duan111.fragment.GioHangFragment;
 import sanghvph30000.fpoly.duan111.fragment.HomeFragment;
 import sanghvph30000.fpoly.duan111.fragment.ProductFragment;
+import sanghvph30000.fpoly.duan111.fragment.StoreFrgm;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     public static BottomNavigationView bottomNavigationView;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.pageBanHang:
-                fragment = new GioHangFragment();
+                fragment = new StoreFrgm();
                 loadFragment(fragment);
                 return true;
 

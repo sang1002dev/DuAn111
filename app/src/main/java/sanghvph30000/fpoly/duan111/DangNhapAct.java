@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class DangNhapAct extends AppCompatActivity {
     Button btnLogin;
     ImageView img_hidePassword;
     CheckBox checkBox;
-
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class DangNhapAct extends AppCompatActivity {
         checkBox = findViewById(R.id.chkNhoMK);
         btnLogin = findViewById(R.id.btnDangNhap);
         img_hidePassword = findViewById(R.id.img_hidePassword);
+        textView = findViewById(R.id.tvDaco1);
         daoUser = new DAOUser(this);
         edtPassword.getInputType();
         //sự kiện hide pass
@@ -99,6 +101,13 @@ public class DangNhapAct extends AppCompatActivity {
                         Toast.makeText(DangNhapAct.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),DangKiActivity.class);
+                startActivity(intent);
             }
         });
     }

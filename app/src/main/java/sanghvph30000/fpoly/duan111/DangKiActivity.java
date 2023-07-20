@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,7 @@ public class DangKiActivity extends AppCompatActivity {
     private EditText edtTenDangNhap, edtSDT, edtMatKhau, edtMatKhau1;
     private CheckBox chkNhoMK;
     private Button btnDangki;
-
+    private TextView textView;
     private DbHelper dbHelper;
 
     @Override
@@ -35,6 +36,7 @@ public class DangKiActivity extends AppCompatActivity {
         edtMatKhau = findViewById(R.id.edtMatKhau);
         edtMatKhau1 = findViewById(R.id.edtMatKhau1);
         chkNhoMK = findViewById(R.id.chkNhoMK1);
+        textView = findViewById(R.id.tvDaco);
         btnDangki = findViewById(R.id.btnDangki);
 
         // Đăng ký sự kiện click cho button Đăng kí
@@ -71,6 +73,13 @@ public class DangKiActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),DangNhapAct.class);
+                startActivity(intent);
             }
         });
     }

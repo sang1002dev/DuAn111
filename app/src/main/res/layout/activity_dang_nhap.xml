@@ -113,6 +113,12 @@
             android:textColor="@color/white"
             android:layout_marginLeft="120dp"
             android:textSize="10dp" />
+        <TextView
+            android:id="@+id/tvDaco1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có tài khoản"
+            android:layout_marginLeft="100dp"/>
 
         <Button
             android:id="@+id/btnDangNhap"
