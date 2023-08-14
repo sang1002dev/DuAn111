@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import sanghvph30000.fpoly.duan111.fragment.AccountFragment;
-import sanghvph30000.fpoly.duan111.fragment.GioHangFragment;
 import sanghvph30000.fpoly.duan111.fragment.HomeFragment;
 import sanghvph30000.fpoly.duan111.fragment.ProductFragment;
 

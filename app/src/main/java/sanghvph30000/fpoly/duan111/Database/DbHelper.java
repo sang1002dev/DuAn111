@@ -7,18 +7,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "DatabaseName";
-    private static final int DATABASE_VERSION = 1;
 
-    public DbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public DbHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 // Bảng thể loại
-        String createTableTheLoai = "CREATE TABLE THELOAI(MaLoai INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String createTableTheLoai = "CREATE TABLE THELOAI(maLoai INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenLoai TEXT);";
         db.execSQL(createTableTheLoai);
         db.execSQL("INSERT INTO THELOAI VALUES(1, 'Iphone'), (2, 'SamSung'), (3, 'Oppo'), (4, 'Ipad'), (5, 'Xiao Me');");
@@ -27,8 +24,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "MaSanPham INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "image BLOG,\n" +
                 "TenSanPham TEXT,\n" +
-                "donGia double,\n" +
-                "MaLoai INTEGER REFERENCES THELOAI(MaLoai),\n" +
+                "DonGia double,\n" +
+                "MaLoai INTEGER REFERENCES THELOAI(maLoai),\n" +
                 "MoTa TEXT\n" +
                 ");");
         db.execSQL(createTableSanPham);
@@ -41,28 +38,32 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(InsertInto.insert_chucvu);
 // Bảng User
         String tableUser = "CREATE Table User (\n" +
-                "maUser INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "TenDN TEXT,\n" +
-                "MaChucVu INTEGER REFERENCES ChucVu(Machucvu),\n" +
+                "MaUser INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "FullName TEXT,\n" +
+                "Username TEXT,\n" +
+                "ChucVu INTEGER REFERENCES ChucVu(MaChucVu),\n" +
                 "Password TEXT,\n" +
-                "SDT TEXT\n" +
+                "SDT TEXT,\n" +
+                "NamSinh INTEGER\n" +
                 ");";
         db.execSQL(tableUser);
         db.execSQL(InsertInto.insert_user);
 // Bảng hóa đơn
         String tableHoaDon = "CREATE Table HoaDon (\n" +
                 "MaHoaDon INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "maUser INTEGER REFERENCES User(maUser),\n" +
+                "MaUser INTEGER REFERENCES User(MaUser),\n" +
                 "TenKhachHang TEXT,\n" +
                 "NgayLapHD TEXT,\n" +
-                "MaGioHang INTEGER\n" +
+                "maSP TEXT ,\n "+
+                "tongTien INTEGER ,\n "+
+                "MaGioHang INTEGER REFERENCES GioHang(MaGioHang)\n" +
                 ");";
         db.execSQL(tableHoaDon);
 // Bảng giỏ hàng
         String tableGioHang = "CREATE Table GioHang (\n" +
-                "MaGioHang INTEGER,\n" +
+                "MaGioHang INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "MaSanPham INTEGER REFERENCES SanPham(MaSanPham),\n" +
-                "soLuong INTEGER,\n" +
+                "SoLuong INTEGER,\n" +
                 "DonGia DOUBLE\n" +
                 ");";
         db.execSQL(tableGioHang);
@@ -70,10 +71,19 @@ public class DbHelper extends SQLiteOpenHelper {
         String tableLuuHoaDon = "CREATE Table LuuHoaDon (\n" +
                 "maLuu INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "MaHoaDon INTEGER REFERENCES HoaDon(MaHoaDon),\n" +
-                "maUser INTEGER REFERENCES User(MaUser),\n" +
+                "MaUser INTEGER REFERENCES User(MaUser),\n" +
+                "tenUser TEXT,\n" +
+                "tenKhachHang TEXT,\n" +
+                "NgayLapHD TEXT,\n" +
+                "SDT TEXT,\n" +
+                "DiaChi TEXT,\n" +
+                "maSP INTEGER,\n" +
+                "tenSP TEXT,\n" +
                 "soLuong INTEGER,\n" +
+                "size TEXT,\n" +
                 "donGia DOUBLE\n," +
-                "thanhTien DOUBLE\n" +
+                "thanhTien DOUBLE,\n" +
+                "TrangThai TEXT\n" +
                 ");";
         db.execSQL(tableLuuHoaDon);
     }
